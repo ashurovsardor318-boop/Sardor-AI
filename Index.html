@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Sardor</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#111827;
+}
+.chat{
+    max-width:700px;
+    height:100vh;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+}
+.messages{
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+}
+.user,.bot{
+    padding:12px;
+    border-radius:10px;
+    margin:10px 0;
+    width:fit-content;
+    max-width:80%;
+}
+.user{
+    background:#2563eb;
+    color:white;
+    margin-left:auto;
+}
+.bot{
+    background:#374151;
+    color:white;
+}
+.input{
+    display:flex;
+    padding:10px;
+    background:#1f2937;
+}
+input{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+button{
+    margin-left:10px;
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="chat">
+<div class="messages" id="messages"></div>
+
+<div class="input">
+<input id="text" placeholder="Xabar yozing...">
+<button onclick="send()">Yuborish</button>
+</div>
+</div>
+
+<script>
+function send(){
+
+let input=document.getElementById("text");
+let msg=input.value;
+
+if(msg=="") return;
+
+let messages=document.getElementById("messages");
+
+messages.innerHTML+=`
+<div class="user">${msg}</div>
+`;
+
+input.value="";
+
+setTimeout(()=>{
+
+messages.innerHTML+=`
+<div class="bot">
+Salom! Men Sardor yaratgan chatbotman.
+Haqiqiy AI ishlashi uchun OpenAI API ulanishi kerak.
+</div>
+`;
+
+messages.scrollTop=messages.scrollHeight;
+
+},700);
+
+}
+</script>
+
+</body>
+</html>
